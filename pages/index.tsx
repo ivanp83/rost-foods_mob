@@ -1,6 +1,10 @@
 import Layout from "@components/layout";
 import styled from "styled-components";
-import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next";
+import {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextPage,
+} from "next";
 import CustomImage from "@components/shared/image";
 import HomeNav from "@components/pages/home/navigation";
 import { IPage } from "@utils/types";
@@ -35,16 +39,16 @@ const Home: NextPage = ({
 };
 export default Home;
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  connectDB();
-  const pageData = await Page.find({ name: "home" });
+  const pageData: IPage = await fetch(
+    `${process.env.NEXT_PUBLIC_API}/page/home`
+  ).then((response) => response.json());
 
   return {
     props: {
-      pageData: JSON.parse(JSON.stringify(pageData)),
+      pageData,
     },
   };
 };
-
 const HomeConatiner = styled.section<{ bgImage: string }>`
   height: fit-content;
   width: 100%;

@@ -34,14 +34,14 @@ const Shipping: NextPage = ({
   );
 };
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  connectDB();
-  const pageData = await Page.find({ name: context?.params?.name });
+  const pageData: IPage = await fetch(
+    `${process.env.NEXT_PUBLIC_API}/page/${context?.params?.name}`
+  ).then((response) => response.json());
 
   return {
     props: {
-      pageData: JSON.parse(JSON.stringify(pageData)),
+      pageData,
     },
   };
 };
-
 export default Shipping;

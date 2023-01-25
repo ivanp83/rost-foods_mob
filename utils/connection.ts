@@ -7,7 +7,7 @@ export const connectDB = async () => {
     return;
   }
   const conn = await mongoose
-    .connect(process.env.DATABASE_URL as string)
+    .connect(`${process.env.DATABASE_URL}`)
     .catch((err: unknown) => console.log(err));
   console.log("Mongoose Connection Established");
 

@@ -3,10 +3,11 @@ import { ResponseFuncs } from "@utils/types";
 import errorHandler from "@utils/db.error-handler";
 import { isErrnoException } from "@utils/type-gurats";
 import { Page } from "@models/page.model";
+import { connectDB } from "@utils/connection";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs;
-
+  connectDB();
   const catcher = (error: unknown) =>
     res.status(400).json({
       error: errorHandler(error),

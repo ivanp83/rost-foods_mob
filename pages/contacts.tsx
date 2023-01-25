@@ -6,7 +6,11 @@ import { Page } from "@models/page.model";
 import { connectDB } from "@utils/connection";
 import { getLinks } from "@utils/helpers";
 import { IPage } from "@utils/types";
-import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next";
+import {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextPage,
+} from "next";
 import styled from "styled-components";
 
 const Contacts: NextPage = ({
@@ -60,12 +64,13 @@ const Contacts: NextPage = ({
 };
 export default Contacts;
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  connectDB();
-  const pageData = await Page.find({ name: context?.params?.name });
+  const pageData: IPage = await fetch(
+    `${process.env.NEXT_PUBLIC_API}/page/${context?.params?.name}`
+  ).then((response) => response.json());
 
   return {
     props: {
-      pageData: JSON.parse(JSON.stringify(pageData)),
+      pageData,
     },
   };
 };

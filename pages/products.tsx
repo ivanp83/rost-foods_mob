@@ -7,7 +7,6 @@ import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next"
 import { IPage, Product } from "@utils/types";
 import { getLinks } from "@utils/helpers";
 import { connectDB } from "@utils/connection";
-import { Page } from "@models/page.model";
 
 const Products: NextPage = ({
   pageData,
@@ -28,12 +27,18 @@ const Products: NextPage = ({
 export default Products;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  connectDB();
-  const pageData = await Page.find({ name: context?.params?.name });
+  const p1 = fetch(`${process.env.NEXT_PUBLIC_API}/page/products`).then(
+    (response) => response.json()
+  );
+  const p2 = fetch(`${process.env.NEXT_PUBLIC_API}/products`).then((response) =>
+    response.json()
+  );
 
+  const [pageData, prodData] = await Promise.all([p1, p2]);
   return {
     props: {
-      pageData: JSON.parse(JSON.stringify(pageData)),
+      pageData,
+      prodData,
     },
   };
 };

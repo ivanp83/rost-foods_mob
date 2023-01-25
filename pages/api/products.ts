@@ -15,7 +15,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const handleCase: ResponseFuncs = {
     GET: async (req: NextApiRequest, res: NextApiResponse) => {
-      const { name } = req.query;
       try {
         Product.find({}).exec(function (err, page) {
           if (err) throw new Error(err.message);
