@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "rost-foods-mob",
+      "script": "yarn start",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": "3001"
+      }
+    }
+  ]
+}
