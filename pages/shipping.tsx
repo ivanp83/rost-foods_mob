@@ -1,13 +1,19 @@
 import Layout from "../components/layout";
 import Arrows from "@components/shared/arrows";
-import { InferGetStaticPropsType, NextPage, GetStaticProps } from "next";
+import {
+  InferGetServerSidePropsType,
+  NextPage,
+  GetServerSideProps,
+} from "next";
 import { getLinks } from "@utils/helpers";
 import { IPage } from "@utils/types";
 import { SectionContainer } from "@styles/common/styles";
+import { connectDB } from "@utils/connection";
+import { Page } from "@models/page.model";
 
 const Shipping: NextPage = ({
   pageData,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { prev, next } = getLinks("/shipping");
   const { title, header, description, content } = pageData as IPage;
 
@@ -27,15 +33,15 @@ const Shipping: NextPage = ({
     </Layout>
   );
 };
-export const getStaticProps: GetStaticProps = async (context) => {
-  const pageData: IPage = await fetch(`${process.env.API}/page/shipping`).then(
-    (response) => response.json()
-  );
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  connectDB();
+  const pageData = await Page.find({ name: context?.params?.name });
 
   return {
     props: {
-      pageData,
+      pageData: JSON.parse(JSON.stringify(pageData)),
     },
   };
 };
+
 export default Shipping;

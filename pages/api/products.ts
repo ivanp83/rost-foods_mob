@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
+require("dotenv").config();
 import { ResponseFuncs } from "@utils/types";
 import errorHandler from "@utils/db.error-handler";
 import { isErrnoException } from "@utils/type-gurats";
-const fs = require("fs");
+import { Product } from "@models/product.model";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs;
@@ -14,16 +15,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const handleCase: ResponseFuncs = {
     GET: async (req: NextApiRequest, res: NextApiResponse) => {
+      const { name } = req.query;
       try {
-        var file = fs.createReadStream("static/declaration.pdf");
-        var stat = fs.statSync("static/declaration.pdf");
-        res.setHeader("Content-Length", stat.size);
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader(
-          "Content-Disposition",
-          "attachment; filename=declaration.pdf"
-        );
-        file.pipe(res);
+        Product.find({}).exec(function (err, page) {
+          if (err) throw new Error(err.message);
+          return res.end(JSON.stringify(page));
+        });
       } catch (error) {
         if (isErrnoException(error) && error.code === "ENOENT") catcher(error);
         return res.status(409).json({

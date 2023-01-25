@@ -18,6 +18,7 @@
     "paths": {
       "@public/*": ["public/*"],
       "@components/*": ["components/*"],
+      "@models/*": ["models/*"],
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
       "@hooks/*": ["hooks/*"],

@@ -1,13 +1,15 @@
 import Layout from "@components/layout";
 import styled from "styled-components";
-import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next";
 import CustomImage from "@components/shared/image";
 import HomeNav from "@components/pages/home/navigation";
 import { IPage } from "@utils/types";
+import { connectDB } from "@utils/connection";
+import { Page } from "@models/page.model";
 
 const Home: NextPage = ({
   pageData,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { title, description, textAbout, mainImageMob, mainTextContent } =
     pageData;
 
@@ -32,14 +34,13 @@ const Home: NextPage = ({
   );
 };
 export default Home;
-export const getStaticProps: GetStaticProps = async (context) => {
-  const pageData: IPage = await fetch(`${process.env.API}/page/home`).then(
-    (response) => response.json()
-  );
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  connectDB();
+  const pageData = await Page.find({ name: "home" });
 
   return {
     props: {
-      pageData,
+      pageData: JSON.parse(JSON.stringify(pageData)),
     },
   };
 };

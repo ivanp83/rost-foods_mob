@@ -2,14 +2,16 @@ import Layout from "@components/layout";
 import ContactForm from "@components/pages/contacts/contact-form";
 import YMapsAPI from "@components/pages/contacts/ymaps";
 import Arrows from "@components/shared/arrows";
+import { Page } from "@models/page.model";
+import { connectDB } from "@utils/connection";
 import { getLinks } from "@utils/helpers";
 import { IPage } from "@utils/types";
-import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next";
 import styled from "styled-components";
 
 const Contacts: NextPage = ({
   pageData,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { prev, next } = getLinks("/contacts");
   const {
     title,
@@ -57,14 +59,13 @@ const Contacts: NextPage = ({
   );
 };
 export default Contacts;
-export const getStaticProps: GetStaticProps = async (context) => {
-  const pageData: IPage = await fetch(`${process.env.API}/page/contacts`).then(
-    (response) => response.json()
-  );
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  connectDB();
+  const pageData = await Page.find({ name: context?.params?.name });
 
   return {
     props: {
-      pageData,
+      pageData: JSON.parse(JSON.stringify(pageData)),
     },
   };
 };

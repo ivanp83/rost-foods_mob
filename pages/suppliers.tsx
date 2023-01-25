@@ -1,13 +1,19 @@
-import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextPage,
+} from "next";
 import Layout from "@components/layout";
 import { getLinks } from "@utils/helpers";
 import Arrows from "@components/shared/arrows";
 import { IPage } from "@utils/types";
 import { SectionContainer } from "@styles/common/styles";
+import { connectDB } from "@utils/connection";
+import { Page } from "@models/page.model";
 
 const Suppliers: NextPage = ({
   pageData,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const {
     title,
     header,
@@ -61,14 +67,13 @@ const Suppliers: NextPage = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const pageData: IPage = await fetch(`${process.env.API}/page/suppliers`).then(
-    (response) => response.json()
-  );
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  connectDB();
+  const pageData = await Page.find({ name: context?.params?.name });
 
   return {
     props: {
-      pageData,
+      pageData: JSON.parse(JSON.stringify(pageData)),
     },
   };
 };

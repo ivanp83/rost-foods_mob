@@ -1,14 +1,20 @@
 import Layout from "@components/layout";
 import Arrows from "@components/shared/arrows";
+import { Page } from "@models/page.model";
 import { SectionContainer } from "@styles/common/styles";
+import { connectDB } from "@utils/connection";
 import { getLinks } from "@utils/helpers";
 import { IPage } from "@utils/types";
-import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextPage,
+} from "next";
 import styled from "styled-components";
 
 const License: NextPage = ({
   pageData,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { prev, next } = getLinks("/license");
   const {
     title,
@@ -26,7 +32,7 @@ const License: NextPage = ({
         <div className="top">
           <h2>{titleH2First}</h2>
           {contentListArray.map((item, i) => (
-            <a href={`${process.env.API}/${item.to}`} key={i}>
+            <a href={`${process.env.NEXT_PUBLIC_API}/${item.to}`} key={i}>
               <span className="download-link">{item.text}</span>
             </a>
           ))}
@@ -46,14 +52,13 @@ const License: NextPage = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const pageData: IPage = await fetch(`${process.env.API}/page/license`).then(
-    (response) => response.json()
-  );
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  connectDB();
+  const pageData = await Page.find({ name: context?.params?.name });
 
   return {
     props: {
-      pageData,
+      pageData: JSON.parse(JSON.stringify(pageData)),
     },
   };
 };

@@ -1,16 +1,22 @@
 import Arrows from "@components/shared/arrows";
+import { Page } from "@models/page.model";
 import { SectionContainer } from "@styles/common/styles";
+import { connectDB } from "@utils/connection";
 import { getLinks } from "@utils/helpers";
 import { IPage } from "@utils/types";
 
-import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
-import styled from "styled-components";
+import {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextPage,
+} from "next";
+
 
 import Layout from "../components/layout";
 
 const About: NextPage = ({
   pageData,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { prev, next } = getLinks("/about");
   const { title, description, header, content } = pageData as IPage;
 
@@ -31,14 +37,13 @@ const About: NextPage = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const pageData: IPage = await fetch(`${process.env.API}/page/about`).then(
-    (response) => response.json()
-  );
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  connectDB();
+  const pageData = await Page.find({ name: context?.params?.name });
 
   return {
     props: {
-      pageData,
+      pageData: JSON.parse(JSON.stringify(pageData)),
     },
   };
 };
