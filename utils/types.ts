@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface ResponseFuncs {
   GET?: Function;
   POST?: Function;
@@ -54,8 +56,8 @@ export interface IAccordion {
   index: number;
   title?: string;
   details: AccordionParams;
-  expanded: number;
-  setExpanded: any;
+  expanded: number | null;
+  setExpanded: Dispatch<SetStateAction<number | null>>;
 }
 
 export enum EmailStatus {

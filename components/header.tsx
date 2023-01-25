@@ -25,11 +25,14 @@ const HeaderContainer = styled.header`
   width: 100vw;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
   position: fixed;
   z-index: 1000;
   top: 0;
   left: 0;
   z-index: 101;
   background: var(--main-dark);
+  padding: 20px 20px;
+  @media all and (orientation: landscape) {
+    padding: 20px 40px;
+  }
 `;

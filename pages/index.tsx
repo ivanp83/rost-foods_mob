@@ -50,7 +50,6 @@ const HomeConatiner = styled.section<{ bgImage: string }>`
   display: grid;
   grid-row-gap: 26px;
   grid-template-columns: 100%;
-  padding: 60px 20px 40px;
 
   h1 {
     height: fit-content;

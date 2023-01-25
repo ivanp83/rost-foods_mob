@@ -7,7 +7,7 @@ const AccordionWrapper: React.FC<{
   duffleParams: AccordionParams;
   palletParams: AccordionParams;
 }> = ({ mainParams, duffleParams, palletParams }) => {
-  const [expanded, setExpanded] = React.useState<number>(0);
+  const [expanded, setExpanded] = React.useState<number | null>(null);
 
   return (
     <AccordionContainer>

@@ -41,8 +41,11 @@ const GlobalStyle = createGlobalStyle`
     background: var(--main-dark);
     line-height: 1.6;
     font-weight: 400;
-    user-select: none;
-    
+    user-select: none;    
+    padding: 60px 20px;
+    @media all and (orientation: landscape) {
+    padding: 60px 40px;
+  }
     @media all and (max-width: 1480px) {
       font-size: 1.6rem;
     }

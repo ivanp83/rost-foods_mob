@@ -17,6 +17,13 @@ export default Items;
 const ItemsContainer = styled.ul`
   list-style: none;
   display: grid;
-  grid-template-columns: 100%;
+  grid-template-columns: 1fr;
+
   grid-gap: 40px;
+  @media all and (min-width: 550px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media all and (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `;

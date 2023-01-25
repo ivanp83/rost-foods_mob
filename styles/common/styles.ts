@@ -6,9 +6,6 @@ export const SectionContainer = styled.section`
   display: grid;
   grid-auto-flow: row;
   grid-row-gap: 26px;
-  grid-template-columns: 100%;
-  padding: 0 20px;
-  margin-top: 6rem;
 
   h2 {
     display: block;
@@ -19,7 +16,6 @@ export const SectionContainer = styled.section`
   .bottom {
     display: grid;
     grid-row-gap: 20px;
-    grid-template-columns: 100%;
   }
   .top {
     content {

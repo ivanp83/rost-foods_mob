@@ -55,4 +55,9 @@ const ItemContainer = styled.li<{ isVisible: boolean }>`
     font-size: 1.4rem;
     color: var(--main-gray);
   }
+  @media all and (orientation: landscape) {
+    .image-container {
+      justify-content: flex-start;
+    }
+  }
 `;

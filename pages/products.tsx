@@ -44,11 +44,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 const ProductsContainer = styled.section`
   width: 100%;
-  padding: 0 20px;
   height: fit-content;
-  width: 100%;
   display: grid;
   grid-row-gap: 40px;
-  grid-template-columns: 100%;
-  padding: 0 20px;
 `;

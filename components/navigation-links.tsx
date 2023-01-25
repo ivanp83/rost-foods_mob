@@ -12,7 +12,7 @@ const NavigationLinks = (props: Props) => {
   return (
     <NavigationContainer>
       <ul>
-        {navLinks.map((link) => (
+        {navLinks.map((link, i) => (
           <li
             key={link.name}
             onClick={() => {
@@ -27,7 +27,7 @@ const NavigationLinks = (props: Props) => {
                 link.to === router.pathname ? "active" : ""
               }`}
             >
-              {link.name}
+              {i + 1}.{link.name}
             </a>
           </li>
         ))}
