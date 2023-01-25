@@ -11,8 +11,8 @@ export default function HomeNav() {
   return (
     <NavigationContainer>
       <ul>
-        {filteredNavLinks.map((link) => (
-          <NavItem link={link} />
+        {filteredNavLinks.map((link, i) => (
+          <NavItem link={link} key={i} />
         ))}
       </ul>
     </NavigationContainer>
