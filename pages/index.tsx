@@ -29,7 +29,12 @@ const Home: NextPage = ({
           <div className="home-conntent">
             <p className="text-about">{textAbout}</p>
             <div className="banner-image">
-              <Image src={mainImage} alt="ассортимент снеков" fill />
+              <Image
+                src={mainImage}
+                alt="ассортимент снеков"
+                fill
+                style={{ objectFit: "cover" }}
+              />
             </div>
             <p className="main-text">
               <span>{mainTextContent}</span>
