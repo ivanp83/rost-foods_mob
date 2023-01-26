@@ -23,7 +23,7 @@ const Home: NextPage = ({
           <div className="home-conntent">
             <p className="text-about">{textAbout}</p>
             <div className="banner">
-              <Image src={mainImageMob} alt="ассортимент снеков" fill />
+              <Image src="/images/15.jpg" alt="ассортимент снеков" fill />
             </div>
             <p className="main-text">
               <span>{mainTextContent}</span>

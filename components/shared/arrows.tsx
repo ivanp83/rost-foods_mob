@@ -77,7 +77,7 @@ const ArrowsContainer = styled.nav`
     }
     svg {
       width: 2rem;
-      height: 1.2rem;
+      height: 1.4rem;
     }
   }
   @media all and (max-width: 1000px) {
