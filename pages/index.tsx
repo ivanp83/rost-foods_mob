@@ -12,18 +12,24 @@ import Image from "next/image";
 const Home: NextPage = ({
   pageData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { title, description, textAbout, mainImageMob, mainTextContent } =
-    pageData;
+  const {
+    title,
+    description,
+    textAbout,
+    mainImage,
+    mainImageMob,
+    mainTextContent,
+  } = pageData;
 
   return (
     <>
       <Layout {...{ title, description }}>
-        <HomeConatiner bgImage={mainImageMob}>
+        <HomeConatiner>
           <h1>{title}</h1>
           <div className="home-conntent">
             <p className="text-about">{textAbout}</p>
             <div className="banner-image">
-              <Image src="/images/15.jpg" alt="ассортимент снеков" fill />
+              <Image src={mainImage} alt="ассортимент снеков" fill />
             </div>
             <p className="main-text">
               <span>{mainTextContent}</span>
@@ -47,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
-const HomeConatiner = styled.section<{ bgImage: string }>`
+const HomeConatiner = styled.section`
   height: fit-content;
   width: 100%;
   display: grid;
