@@ -60,15 +60,17 @@ const ArrowsContainer = styled.nav`
   text-transform: uppercase;
   margin-top: 40px;
 
-  ul,
-  a {
+  ul {
     display: contents;
-    color: var(--main-light);
+    list-style: none;
   }
-  .icon-container {
+
+  a {
+    color: var(--main-light);
     display: flex;
     align-items: center;
-
+  }
+  .icon-container {
     p {
       font-size: 1.3rem;
       margin: 0 0.2rem;

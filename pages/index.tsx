@@ -5,9 +5,9 @@ import {
   InferGetServerSidePropsType,
   NextPage,
 } from "next";
-import CustomImage from "@components/shared/image";
 import HomeNav from "@components/pages/home/navigation";
 import { IPage } from "@utils/types";
+import Image from "next/image";
 
 const Home: NextPage = ({
   pageData,
@@ -23,7 +23,7 @@ const Home: NextPage = ({
           <div className="home-conntent">
             <p className="text-about">{textAbout}</p>
             <div className="banner">
-              <CustomImage src={mainImageMob} alt="ассортимент снеков" />
+              <Image src={mainImageMob} alt="ассортимент снеков" fill />
             </div>
             <p className="main-text">
               <span>{mainTextContent}</span>
