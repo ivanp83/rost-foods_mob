@@ -1,8 +1,6 @@
 import Layout from "@components/layout";
 import Arrows from "@components/shared/arrows";
-import { Page } from "@models/page.model";
 import { SectionContainer } from "@styles/common/styles";
-import { connectDB } from "@utils/connection";
 import { getLinks } from "@utils/helpers";
 import { IPage } from "@utils/types";
 import {
@@ -29,7 +27,7 @@ const License: NextPage = ({
     <Layout title={title} description={description}>
       <SectionContainer>
         <h1> {header}</h1>
-        <div className="top">
+        <div className="top top--s">
           <h2>{titleH2First}</h2>
           {contentListArray.map((item, i) => (
             <a href={`${process.env.NEXT_PUBLIC_API}/${item.to}`} key={i}>
@@ -37,7 +35,7 @@ const License: NextPage = ({
             </a>
           ))}
         </div>
-        <div className="bottom">
+        <div className="bottom bottom--s">
           <h2>{titleH2Sec}</h2>
           {content.map((item, i) => (
             <p className="text-content" key={i}>
@@ -54,7 +52,7 @@ const License: NextPage = ({
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const pageData: IPage = await fetch(
-    `${process.env.NEXT_PUBLIC_API}/page/${context?.params?.name}`
+    `${process.env.NEXT_PUBLIC_API}/page/license`
   ).then((response) => response.json());
 
   return {

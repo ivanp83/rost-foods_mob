@@ -1,7 +1,7 @@
 import Arrows from "@components/shared/arrows";
 import { SectionContainer } from "@styles/common/styles";
-
 import { getLinks } from "@utils/helpers";
+import redirect from "@utils/redirect";
 import { IPage } from "@utils/types";
 
 import {
@@ -22,7 +22,7 @@ const About: NextPage = ({
     <Layout title={title} description={description}>
       <SectionContainer>
         <h1>{header}</h1>
-        <div className="top">
+        <div className="top top--s">
           {content.map((item, i) => (
             <span key={i} className="content">
               {item}
@@ -36,8 +36,9 @@ const About: NextPage = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  await redirect(context);
   const pageData: IPage = await fetch(
-    `${process.env.NEXT_PUBLIC_API}/page/${context?.params?.name}`
+    `${process.env.NEXT_PUBLIC_API}/page/about`
   ).then((response) => response.json());
 
   return {

@@ -2,8 +2,6 @@ import Layout from "@components/layout";
 import ContactForm from "@components/pages/contacts/contact-form";
 import YMapsAPI from "@components/pages/contacts/ymaps";
 import Arrows from "@components/shared/arrows";
-import { Page } from "@models/page.model";
-import { connectDB } from "@utils/connection";
 import { getLinks } from "@utils/helpers";
 import { IPage } from "@utils/types";
 import {
@@ -20,7 +18,6 @@ const Contacts: NextPage = ({
   const {
     title,
     description,
-    header,
     subTitle,
     contentList,
     contentListSec,
@@ -32,7 +29,7 @@ const Contacts: NextPage = ({
     <Layout title={title} description={description}>
       <ContactsContainer>
         <h1>{title}</h1>
-        <div className="top">
+        <div className="top top--s">
           <h2>{titleH2First}</h2>
           <div className="warehouse">
             <h4>{subTitle}</h4>
@@ -53,7 +50,7 @@ const Contacts: NextPage = ({
           <YMapsAPI />
         </div>
 
-        <div className="bottom">
+        <div className="bottom bottom--s">
           <h2>{titleH2Sec}</h2>
           <ContactForm />
         </div>
@@ -65,7 +62,7 @@ const Contacts: NextPage = ({
 export default Contacts;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const pageData: IPage = await fetch(
-    `${process.env.NEXT_PUBLIC_API}/page/${context?.params?.name}`
+    `${process.env.NEXT_PUBLIC_API}/page/contacts`
   ).then((response) => response.json());
 
   return {
@@ -81,7 +78,6 @@ const ContactsContainer = styled.section`
   display: grid;
   grid-row-gap: 40px;
   grid-template-columns: 100%;
-  padding: 0 20px;
 
   h2 {
     display: block;
@@ -95,6 +91,11 @@ const ContactsContainer = styled.section`
   .bottom {
     display: grid;
     grid-template-columns: 100%;
+    &--s {
+      @media all and (min-width: 900px) and (orientation: landscape) {
+        max-width: 62%;
+      }
+    }
   }
 
   .data-container * {

@@ -16,6 +16,11 @@ export const SectionContainer = styled.section`
   .bottom {
     display: grid;
     grid-row-gap: 20px;
+    &--s {
+      @media all and (min-width: 900px) and (orientation: landscape) {
+        max-width: 62%;
+      }
+    }
   }
   .top {
     content {

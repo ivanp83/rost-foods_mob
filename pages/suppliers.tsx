@@ -8,8 +8,6 @@ import { getLinks } from "@utils/helpers";
 import Arrows from "@components/shared/arrows";
 import { IPage } from "@utils/types";
 import { SectionContainer } from "@styles/common/styles";
-import { connectDB } from "@utils/connection";
-import { Page } from "@models/page.model";
 
 const Suppliers: NextPage = ({
   pageData,
@@ -31,7 +29,7 @@ const Suppliers: NextPage = ({
     <Layout title={title} description={description}>
       <SectionContainer>
         <h1>{header}</h1>
-        <div className="top">
+        <div className="top top--s">
           <h2>{titleH2First}</h2>
           <div>
             <h4 className="sub-title">{titleH4First}:</h4>
@@ -46,7 +44,7 @@ const Suppliers: NextPage = ({
             </ul>
           </div>
         </div>
-        <div className="bottom">
+        <div className="bottom bottom--s">
           <h2>{titleH2Sec}</h2>
           <div>
             <h4 className="sub-title">{titleH4Sec}:</h4>
@@ -69,7 +67,7 @@ const Suppliers: NextPage = ({
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const pageData: IPage = await fetch(
-    `${process.env.NEXT_PUBLIC_API}/page/${context?.params?.name}`
+    `${process.env.NEXT_PUBLIC_API}/page/suppliers`
   ).then((response) => response.json());
 
   return {

@@ -54,7 +54,6 @@ const Arrows: React.FC<IProps> = ({ prev, next }) => {
 const ArrowsContainer = styled.nav`
   display: none;
   justify-content: space-between;
-  padding: 3.4rem 0rem;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.35rem;

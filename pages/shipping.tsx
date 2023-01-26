@@ -8,8 +8,6 @@ import {
 import { getLinks } from "@utils/helpers";
 import { IPage } from "@utils/types";
 import { SectionContainer } from "@styles/common/styles";
-import { connectDB } from "@utils/connection";
-import { Page } from "@models/page.model";
 
 const Shipping: NextPage = ({
   pageData,
@@ -35,7 +33,7 @@ const Shipping: NextPage = ({
 };
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const pageData: IPage = await fetch(
-    `${process.env.NEXT_PUBLIC_API}/page/${context?.params?.name}`
+    `${process.env.NEXT_PUBLIC_API}/page/shipping`
   ).then((response) => response.json());
 
   return {

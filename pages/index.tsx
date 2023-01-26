@@ -8,8 +8,6 @@ import {
 import CustomImage from "@components/shared/image";
 import HomeNav from "@components/pages/home/navigation";
 import { IPage } from "@utils/types";
-import { connectDB } from "@utils/connection";
-import { Page } from "@models/page.model";
 
 const Home: NextPage = ({
   pageData,

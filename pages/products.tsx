@@ -2,11 +2,13 @@ import styled from "styled-components";
 import Items from "@components/pages/products/items";
 import Layout from "@components/layout";
 import Arrows from "@components/shared/arrows";
-
-import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next";
-import { IPage, Product } from "@utils/types";
+import {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextPage,
+} from "next";
+import { IPage } from "@utils/types";
 import { getLinks } from "@utils/helpers";
-import { connectDB } from "@utils/connection";
 
 const Products: NextPage = ({
   pageData,
