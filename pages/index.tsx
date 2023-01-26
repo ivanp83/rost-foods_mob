@@ -18,12 +18,12 @@ const Home: NextPage = ({
   return (
     <>
       <Layout {...{ title, description }}>
-        <HomeConatiner>
+        <HomeConatiner bgImage={mainImageMob}>
           <h1>{title}</h1>
           <div className="home-conntent">
             <p className="text-about">{textAbout}</p>
-            <div className="banner">
-              <Image src={mainImageMob} alt="ассортимент снеков" fill />
+            <div className="banner-image">
+              <Image src="/images/15.jpg" alt="ассортимент снеков" fill />
             </div>
             <p className="main-text">
               <span>{mainTextContent}</span>
@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
-const HomeConatiner = styled.section`
+const HomeConatiner = styled.section<{ bgImage: string }>`
   height: fit-content;
   width: 100%;
   display: grid;
@@ -71,11 +71,13 @@ const HomeConatiner = styled.section`
         display: block;
       }
     }
-    .banner {
+
+    .banner-image {
       width: 100%;
-      height: 50vh;
+      height: calc(100vw - 4rem);
       position: relative;
     }
+
     .main-text {
       height: fit-content;
 
