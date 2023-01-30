@@ -19,17 +19,17 @@ export interface IPage {
   titleH2First: string;
   titleH2Sec: string;
   titleH2Third: string;
-  titleH3: [string];
+  titleH3: string[];
   titleH4First: string;
   titleH4Sec: string;
   quoteSec: string;
   subTitle: string;
   subTitleSec: string;
-  content: [string];
+  content: string[];
   textContent: string;
   textContentSub: string;
-  contentList: [string];
-  contentListSec: [string];
+  contentList: string[];
+  contentListSec: string[];
   priceList: string;
   contentListArray: [
     {

@@ -25,6 +25,7 @@ const Contacts: NextPage = ({
     titleH2Sec,
     subTitleSec,
   } = pageData as IPage;
+
   return (
     <Layout title={title} description={description}>
       <ContactsContainer>
@@ -34,17 +35,33 @@ const Contacts: NextPage = ({
           <div className="warehouse">
             <h4>{subTitle}</h4>
             <div className="data-container">
-              {contentList.map((item, i) => (
-                <span key={i}>{item}</span>
-              ))}
+              <span>{contentList[0]}</span>
+              <span>{contentList[1]}</span>
+              <a href={`tel:+${contentList[2].split("+").pop()}`}>
+                {contentList[2]}
+              </a>
+              <a href={`tel:+${contentList[3].split("+").pop()}`}>
+                {contentList[3]}
+              </a>
+              <a
+                href={`mailto:${contentList[4].replace(
+                  "E-mail: ",
+                  ""
+                )}?subject=Вопрос`}
+              >
+                {contentList[4]}
+              </a>
             </div>
           </div>
           <div className="warehouse">
             <h4>{subTitleSec}</h4>
             <div className="data-container">
-              {contentListSec.map((item, i) => (
-                <span key={i}>{item}</span>
-              ))}
+              <span>{contentListSec[0]}</span>
+              <span>{contentListSec[1]}</span>
+              <span>{contentListSec[3]}</span>
+              <a href={`tel:+${contentListSec[2].split("+").pop()}`}>
+                {contentListSec[2]}
+              </a>
             </div>
           </div>
           <YMapsAPI />
@@ -78,7 +95,12 @@ const ContactsContainer = styled.section`
   display: grid;
   grid-row-gap: 40px;
   grid-template-columns: 100%;
-
+  a[href^="mailto:"],
+  a[href^="tel:"] {
+    font-size: 16px;
+    line-height: 32px;
+    color: var(--main-blue);
+  }
   h2 {
     display: block;
     height: fit-content;

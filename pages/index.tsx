@@ -12,14 +12,8 @@ import Image from "next/image";
 const Home: NextPage = ({
   pageData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const {
-    title,
-    description,
-    textAbout,
-    mainImage,
-    mainImageMob,
-    mainTextContent,
-  } = pageData;
+  const { title, description, textAbout, mainImage, mainTextContent } =
+    pageData;
 
   return (
     <>
@@ -85,7 +79,7 @@ const HomeConatiner = styled.section`
 
     .banner-image {
       width: 100%;
-      height: calc(100vw - 4rem);
+      height: calc(100vw / 4 * 3 - 4rem);
       position: relative;
     }
 

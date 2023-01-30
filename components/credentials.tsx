@@ -3,12 +3,9 @@ import styled from "styled-components";
 export default function Credentials() {
   return (
     <CredentialsContainer>
-      <span>
-        <a href="tel: +74012520333">+7(4012) 520 333</a>
-      </span>
-      <span>
-        <a href="mailto:rost-foods@mail.ru">rost-foods@mail.ru</a>
-      </span>
+      <a href="tel: +74012520333">+7(4012) 520 333</a>
+
+      <a href="mailto:rost-foods@mail.ru">rost-foods@mail.ru</a>
     </CredentialsContainer>
   );
 }
@@ -23,7 +20,6 @@ const CredentialsContainer = styled.div`
 
   a {
     display: inline-block;
-    color: inherit;
-    text-decoration: underline;
+    color: var(--main-blue);
   }
 `;
