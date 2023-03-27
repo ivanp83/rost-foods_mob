@@ -147,9 +147,7 @@ const ContactsContainer = styled.form`
     justify-content: space-between;
     align-items: flex-start;
     position: relative;
-    input {
-      margin-bottom: 1.6rem;
-    }
+
     .form__label {
       font-size: 1.6rem;
       margin-left: 2rem;
