@@ -42,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.6;
     font-weight: 400;
     user-select: none;    
-    padding: 60px 20px;
+    padding: 70px 20px;
     @media all and (orientation: landscape) {
     padding: 60px 40px;
   }
@@ -59,7 +59,8 @@ const GlobalStyle = createGlobalStyle`
     font-weight:700;
   }
   h1 {
-    font-size: 3rem;
+    font-size: 5rem;
+    line-height:1.2;
     border-bottom: 1px solid;
   }
   h2{
@@ -126,6 +127,12 @@ const GlobalStyle = createGlobalStyle`
   @media all and (max-width: 1480px){
     :root {
       --space-right:6.2rem;
+    }
+  }
+  @media all and (max-width: 600px){
+    h1 {
+      font-size: 3rem;
+
     }
   }
 

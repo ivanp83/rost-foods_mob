@@ -20,6 +20,7 @@ const CredentialsContainer = styled.div`
 
   a {
     display: inline-block;
-    color: var(--main-blue);
+    color: var(--main-light);
+    text-decoration: underline;
   }
 `;

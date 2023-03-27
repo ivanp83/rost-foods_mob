@@ -99,7 +99,7 @@ const ContactsContainer = styled.section`
   a[href^="tel:"] {
     font-size: 16px;
     line-height: 32px;
-    color: var(--main-blue);
+    color: var(--main-light);
   }
   h2 {
     display: block;
