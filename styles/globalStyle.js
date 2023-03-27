@@ -55,7 +55,6 @@ const GlobalStyle = createGlobalStyle`
   h1,
   h2 {
     font-family: var(--main-ff);
-
     font-weight:700;
   }
   h1 {
@@ -64,7 +63,9 @@ const GlobalStyle = createGlobalStyle`
     border-bottom: 1px solid;
   }
   h2{
-    font-size: 2.4rem;
+    font-size: 2.4rem;    
+    line-height: 1.3;
+
 
   }
   h3 {
