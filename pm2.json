@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "rost-foods-mob",
-      "script": "yarn start",
+      "script": "npm run start",
       "env": {
         "NODE_ENV": "production",
         "PORT": "3001"
