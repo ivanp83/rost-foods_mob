@@ -72,7 +72,7 @@ const ArrowsContainer = styled.nav`
   }
   .icon-container {
     p {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       margin: 0 0.2rem;
     }
     svg {

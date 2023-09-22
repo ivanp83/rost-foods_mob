@@ -190,9 +190,9 @@ const ContactsContainer = styled.form`
     }
   }
   button {
-    background-color: #fff000;
+    background-color: var(--main-blue);
     border-radius: 50px;
-    color: #000;
+    color: #fff;
     cursor: pointer;
     font-weight: bold;
     padding: 15px 30px;

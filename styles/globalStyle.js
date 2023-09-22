@@ -60,7 +60,7 @@ const GlobalStyle = createGlobalStyle`
   h1 {
     font-size: 5rem;
     line-height:1.2;
-    border-bottom: 1px solid;
+
   }
   h2{
     font-size: 2rem;    
@@ -135,6 +135,12 @@ a {
   @media all and (max-width: 600px){
     h1 {
       font-size: 3rem;
+
+    }
+  }
+  @media all and (max-width: 1000px) and (orientation: landscape){
+    h1 {
+      font-size: 4rem;
 
     }
   }

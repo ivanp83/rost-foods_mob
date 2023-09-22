@@ -27,7 +27,7 @@ const NavigationLinks = (props: Props) => {
                 link.to === router.pathname ? "active" : ""
               }`}
             >
-              {i + 1}.{link.name}
+              #{i + 1}&nbsp;{link.name}
             </a>
           </li>
         ))}
@@ -54,8 +54,8 @@ const NavigationContainer = styled.nav`
   li {
     cursor: pointer;
     font-size: 2rem;
-    font-weight: 600;
-    text-transform: uppercase;
+    font-weight: 500;
+    text-transform: capitalize;
     letter-spacing: 0.35rem;
     width: 100%;
     text-align: left;

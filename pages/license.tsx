@@ -78,7 +78,7 @@ const LicenseContainer = styled.section`
   .top,
   .bottom {
     display: grid;
-    grid-row-gap: 20px;
+
     grid-template-columns: 100%;
   }
 `;

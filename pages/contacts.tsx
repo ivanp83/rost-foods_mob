@@ -30,10 +30,9 @@ const Contacts: NextPage = ({
     <Layout title={title} description={description}>
       <ContactsContainer>
         <h1>{title}</h1>
-        <div className="top top--s">
-          <h2>{titleH2First}</h2>
+        <section className="top top--s">
           <div className="warehouse">
-            <h4>{subTitle}</h4>
+            <h2>{subTitle}</h2>
             <div className="data-container">
               <span>{contentList[0]}</span>
               <span>{contentList[1]}</span>
@@ -54,7 +53,7 @@ const Contacts: NextPage = ({
             </div>
           </div>
           <div className="warehouse">
-            <h4>{subTitleSec}</h4>
+            <h2>{subTitleSec}</h2>
             <div className="data-container">
               <span>{contentListSec[0]}</span>
               <span>{contentListSec[1]}</span>
@@ -65,7 +64,7 @@ const Contacts: NextPage = ({
             </div>
           </div>
           <YMapsAPI />
-        </div>
+        </section>
 
         <div className="bottom bottom--s">
           <h2>{titleH2Sec}</h2>
@@ -89,7 +88,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const ContactsContainer = styled.section`
+const ContactsContainer = styled.article`
   height: fit-content;
   width: 100%;
   display: grid;
