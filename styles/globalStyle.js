@@ -4,14 +4,14 @@ const GlobalStyle = createGlobalStyle`
 
 :root {
   --main-dark: #121111;
-  --main-blue: #4393ff;
+  --main-blue: #4d95ea;
   --main-light: #fdf4f4;
   --main-gray: #ada2a2;
   --main-yellow: #f9f2a1;
   --main-red:#b00c0c;
   --main-green:#107d10;
   --main-ff: "Roboto", sans-serif;
-  --title-ff: ;
+  --main-fs:1.8rem ;
   --index: calc(1vh+1vw);
   --space-right:8.2rem;
 }
@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     position: relative;
-    font-size: 1.6rem;
+    font-size:var( --main-fs);
     color: var(--main-light);
     background: var(--main-dark);
     line-height: 1.6;
@@ -55,7 +55,7 @@ const GlobalStyle = createGlobalStyle`
   h1,
   h2 {
     font-family: var(--main-ff);
-    font-weight:700;
+    font-weight:600;
   }
   h1 {
     font-size: 5rem;
@@ -63,8 +63,8 @@ const GlobalStyle = createGlobalStyle`
     border-bottom: 1px solid;
   }
   h2{
-    font-size: 2.4rem;    
-    line-height: 1.3;
+    font-size: 2rem;    
+
 
 
   }
@@ -80,7 +80,9 @@ const GlobalStyle = createGlobalStyle`
   ul {
     list-style: square inside;
   }
-
+a {
+  color:var(--main-blue);
+}
   *::-webkit-scrollbar-track {
     box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
     background-color: #f5f5f5;
